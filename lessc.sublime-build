@@ -1,0 +1,31 @@
+{
+    "cmd": ["lessc", "-x", "$file", "${file_path}/${file_base_name}.css", "--source-map", "--verbose"],
+    "file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+    "selector": "source.css.less",
+
+    "osx":
+    {
+        "path": "/usr/local/bin:$PATH"
+    },
+
+    "windows":
+    {
+        "cmd": ["lessc.cmd", "-x", "$file", "${file_base_name}.css", "--source-map"]
+    },
+
+    "variants": [
+        {
+            "name": "Non-Minified",
+            "cmd": ["lessc",  "", "$file", "${file_path}/${file_base_name}.min.css", "--source-map", "--verbose"],
+
+            "osx":
+            {
+                "path": "/usr/local/bin:$PATH"
+            },
+            "windows":
+            {
+                "cmd": ["lessc.cmd", "", "$file", "${file_base_name}.css", "--source-map"]
+            }
+        }
+    ]
+}
